@@ -1,2 +1,3 @@
 # War-Tycoon-Silent-Aim-Script
-This is a basic silent aim for https://www.roblox.com/games/4639625707/War-Tycoon. Please note that your executor must at least support hookfunction and require.
+This script is open-source and free. Anyone can modify/use this script without restrictions.
+You can also view this script over at [scriptblox.com](https://scriptblox.com/script/Comanche-War-Tycoon-Silent-Aim-Keyless-193638) or [haxhell.com](https://haxhell.com/scripts/comanche-war-tycoon-war-tycoon-silent-aim-keyless) or [rscripts.net](https://rscripts.net/script/war-tycoon-silent-aim-keyless-s2Xg).
