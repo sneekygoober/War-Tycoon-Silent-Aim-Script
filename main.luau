@@ -19,6 +19,8 @@ local UIS: UserInputService = cloneref(game:GetService("UserInputService"));
 local plr = Players.LocalPlayer;
 local cam = workspace.CurrentCamera;
 
+local isMobile = UIS.TouchEnabled and not UIS.KeyboardEnabled and not UIS.MouseEnabled;
+
 local s, ac = pcall(require, RS.BulletFireSystem.FastCastRedux.ActiveCast);
 if not s then
     return warn(executor .. " returned an error while trying to require RS.BulletFireSystem.FastCastRedux.ActiveCast:\n" .. ac);
@@ -77,7 +79,7 @@ local getTarget = function(origin: Vector3)
             if nTPart then tPart = nTPart; end;
         end;
 
-        local distance = (Vector2.new(pos.X, pos.Y) - UIS:GetMouseLocation()).Magnitude;
+        local distance = (Vector2.new(pos.X, pos.Y) - (isMobile and Vector2.new(cam.ViewportSize.X/2, cam.ViewportSize.Y/2) or UIS:GetMouseLocation())).Magnitude;
         if distance < cDistance then
             cPart = tPart;
             cDistance = distance;
@@ -87,7 +89,7 @@ local getTarget = function(origin: Vector3)
     return cPart;
 end;
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoober/sneeky-s-fov-lib/refs/heads/main/main.luau"))()(getgenv().fov or 300, getTarget);
+loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoober/sneeky-s-fov-lib/refs/heads/main/main.luau"))()(getgenv().fov or 300, getTarget, true);
 
 local old; old = clonefunction(hookfunction(rawget(ac, "new"), newcclosure(function(_, origin, __, ___, ...)
     local c = getTarget(origin);
